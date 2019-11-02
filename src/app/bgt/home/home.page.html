@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      <ion-buttons end>
+        <ion-button icon-only (click)="logout()">
+          <ion-icon name="log-out"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>ITS:</ion-label>
+    <ion-input type="number" [(ngModel)]="id"></ion-input>
+  </ion-item>
+  <ion-button (click)="clickMe('its')">Enter</ion-button>
+  <ion-button *ngIf="showScan" (click)="addListenNFC()">Scan</ion-button>
+  <h1 *ngIf="show">{{ userDetails['user']['name'] }} {{userDetails['user']['father_name'] }} </h1>
+  <form (submit)="onSubmit()">
+    <ion-item>
+      <ion-label>Event</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" [(ngModel)]="submitDetails.paymentName"
+        name="eventName">
+        <ion-select-option *ngFor="let details of eventDetails" [value]="details">{{ details['eventName'] }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-input type="text" [(ngModel)]="submitDetails.paymentDescription" name="description"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Amount</ion-label>
+      <ion-input required type="number" [(ngModel)]="submitDetails.paymentAmount" name="amount"></ion-input>
+    </ion-item>
+    <ion-button fill="outline" [disabled]="hideSubmit" type="submit">Submit</ion-button>
+  </form>
+  <br>
+  <br>
+  {{nfc}}
+
+</ion-content>

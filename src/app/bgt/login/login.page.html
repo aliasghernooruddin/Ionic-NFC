@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>  
+      <ion-item>
+          <ion-label>Email</ion-label>
+          <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" [(ngModel)]="loginCredentials.username">
+            <ion-select-option *ngFor="let details of eventDetails" [value]="details['email']" >{{ details['email'] }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-input placeholder="Password"type="password" clearInput [(ngModel)]="loginCredentials.password"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label>Role</ion-label>
+              <ion-select  [interfaceOptions]="customPopoverOptions" interface="popover" [(ngModel)]="loginCredentials.role">
+                <ion-select-option *ngFor="let details of eventDetails" [value]="details['role']" >{{ details['role'] }}</ion-select-option>
+              </ion-select>
+            </ion-item>
+<br>
+            <ion-button (click)="login()" fill="outline">Login</ion-button>
+           
+  </ion-content>

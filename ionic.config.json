@@ -1,0 +1,7 @@
+{
+  "name": "BGT-NFC",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
